@@ -28,7 +28,7 @@ variable "public_range" {
 }
 
 variable "managed-zone-name" {
- default = "<your-managed_zone>"
+ default = "${var.clusterid}-zone"
 }
 
 variable "domain" {
