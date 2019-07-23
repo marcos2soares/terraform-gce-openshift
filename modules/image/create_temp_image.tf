@@ -1,7 +1,7 @@
 // Prepare raw disk to create custom ami
 resource "null_resource" "create_raw_disk" {
   provisioner "local-exec" {
-    command = "if [ ! -f rhel-server-7.5-x86_64-kvm.qcow2 ]; then wget http://repo.necol.org/iso/rhel-server-7.5-x86_64-kvm.qcow2; fi; yum install -y qemu-img -y; if [ ! -f disk.raw ]; then qemu-img convert -p -S 4096 -f qcow2 -O raw rhel-server-7.5-x86_64-kvm.qcow2 disk.raw; fi; if [ ! -f rhel-7.5.tar.gz ]; then tar -Szcf rhel-7.5.tar.gz disk.raw; fi"
+    command = "if [ ! -f rhel-server-7.5-x86_64-kvm.qcow2 ]; then wget http://repo.necol.org/iso/rhel-server-7.5-x86_64-kvm.qcow2; fi; sudo yum install -y qemu-img ; if [ ! -f disk.raw ]; then qemu-img convert -p -S 4096 -f qcow2 -O raw rhel-server-7.5-x86_64-kvm.qcow2 disk.raw; fi; if [ ! -f rhel-7.5.tar.gz ]; then tar -Szcf rhel-7.5.tar.gz disk.raw; fi"
  }
 }
 
